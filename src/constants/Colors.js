@@ -7,4 +7,5 @@ export default {
   black: '#000000',
   backgrndClr: '#00000060',
   gray: '#eeeeee',
+  link: '#0000ee',
 };

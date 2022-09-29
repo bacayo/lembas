@@ -8,6 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
+    "lint_fix": "eslint --fix --ext .js,.jsx .",
     "svgr": "svgr ./assets/icons -d ./src/components/Icons --native --icon --svg-props width=24,height=24,className="
   },
   "dependencies": {

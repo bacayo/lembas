@@ -7,6 +7,7 @@ import Loading from '../../components/Loading';
 import styles from './RecipeInfoScreenStyles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../constants/Colors';
+import TopBarView from '../../components/TopBarView/TopBarView';
 
 const RecipeInfoScreen = props => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const RecipeInfoScreen = props => {
   }
   return (
     <View style={styles.container}>
+      <TopBarView />
       <Text style={styles.title}>{recipe.title}</Text>
       <Image style={styles.image} source={{ uri: recipe.image }} />
       <Text
@@ -57,9 +59,16 @@ const RecipeInfoScreen = props => {
         <View style={styles.detailCardContainer}>
           <Icon name="attach-money" size={24} color={Colors.black} />
           <Text style={styles.textInfo}>
-            {recipe.pricePerServing} per serving
+            {(Number(recipe.pricePerServing) / 100).toFixed(2)} per serving
           </Text>
         </View>
+      </View>
+      <View style={styles.dietsContainer}>
+        {recipe.diets.map(item => (
+          <View style={styles.diet}>
+            <Text style={styles.dietTitle}>{item}</Text>
+          </View>
+        ))}
       </View>
     </View>
   );

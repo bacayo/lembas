@@ -15,6 +15,23 @@ export default StyleSheet.create({
     marginVertical: 5,
     padding: 5,
   },
+  diet: {
+    backgroundColor: Colors.lightBlue,
+    borderRadius: 10,
+    marginHorizontal: 10,
+    marginVertical: 5,
+    padding: 8,
+  },
+  dietTitle: {
+    color: Colors.black,
+    fontFamily: 'Roboto-Regular',
+    fontSize: 14,
+  },
+  dietsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 30,
+  },
   extraDetails: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -25,7 +42,7 @@ export default StyleSheet.create({
     resizeMode: 'contain',
   },
   source: {
-    color: Colors.darkBlue,
+    color: Colors.link,
     fontFamily: 'Roboto-Medium',
     fontSize: 16,
     marginLeft: 10,
