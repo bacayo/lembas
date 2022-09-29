@@ -1,0 +1,26 @@
+import { createSlice } from '@reduxjs/toolkit';
+import { getRecipeInformationAsync } from '../../api';
+
+const recipeInfoSlice = createSlice({
+  name: 'recipeInfoSlice',
+  initialState: {
+    recipeIsLoading: false,
+    error: null,
+    recipe: [],
+  },
+  extraReducers: {
+    [getRecipeInformationAsync.pending]: state => {
+      state.recipeIsLoading = true;
+    },
+    [getRecipeInformationAsync.fulfilled]: (state, action) => {
+      state.recipeIsLoading = false;
+      state.recipe = action.payload;
+    },
+    [getRecipeInformationAsync.rejected]: (state, action) => {
+      state.recipeIsLoading = false;
+      state.error = action.error.message;
+    },
+  },
+});
+
+export default recipeInfoSlice.reducer;
