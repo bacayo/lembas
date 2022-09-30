@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Pressable } from 'react-native';
 import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -6,10 +6,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import styles from './TopBarViewStyles';
 import Colors from '../../constants/Colors';
 
-const TopBarView = () => {
+const TopBarView = ({ handleOverview, handleIng }) => {
   const iconSize = 35;
-
-  const [selected, setSelected] = useState(false);
 
   return (
     <View style={styles.scrollview}>
@@ -17,14 +15,14 @@ const TopBarView = () => {
         style={styles.container}
         horizontal
         showsHorizontalScrollIndicator={false}>
-        <View style={styles.innerContainer}>
+        <Pressable onPress={handleOverview} style={styles.innerContainer}>
           <Icon name="folder" color={Colors.darkBlue} size={iconSize} />
           <Text style={styles.title}>Overview</Text>
-        </View>
-        <View style={styles.innerContainer}>
+        </Pressable>
+        <Pressable onPress={handleIng} style={styles.innerContainer}>
           <Icon name="shopping-cart" color={Colors.darkBlue} size={iconSize} />
           <Text style={styles.title}>Ingredients</Text>
-        </View>
+        </Pressable>
         <View style={styles.innerContainer}>
           <Icon
             name="format-align-justify"

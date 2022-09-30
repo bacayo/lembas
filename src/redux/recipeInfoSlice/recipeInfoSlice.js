@@ -7,6 +7,7 @@ const recipeInfoSlice = createSlice({
     recipeIsLoading: false,
     error: null,
     recipe: [],
+    extendedIng: [],
   },
   extraReducers: {
     [getRecipeInformationAsync.pending]: state => {
@@ -15,6 +16,7 @@ const recipeInfoSlice = createSlice({
     [getRecipeInformationAsync.fulfilled]: (state, action) => {
       state.recipeIsLoading = false;
       state.recipe = action.payload;
+      state.extendedIng = action.payload.extendedIngredients;
     },
     [getRecipeInformationAsync.rejected]: (state, action) => {
       state.recipeIsLoading = false;

@@ -2,6 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from '../../screens/HomeScreen';
+import INGScreen from '../../screens/INGScreen';
 import RecipeInfoScreen from '../../screens/RecipeInfoScreen';
 import Colors from '../../constants/Colors';
 
@@ -23,6 +24,7 @@ const HomeStack = () => {
           headerStyle: { backgroundColor: Colors.lightBlue },
         })}
       />
+      <Stack.Screen name="INGScreen" component={INGScreen} />
     </Stack.Navigator>
   );
 };
