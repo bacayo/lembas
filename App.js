@@ -1,15 +1,17 @@
-import { View, Text } from 'react-native';
 import React from 'react';
-import { Provider } from 'react-redux';
+import { Provider as StoreProvider } from 'react-redux';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 import store from './src/redux/store';
 import Router from './src/Router';
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <Router />
-    </Provider>
+    <StoreProvider store={store}>
+      <PaperProvider>
+        <Router />
+      </PaperProvider>
+    </StoreProvider>
   );
 };
 

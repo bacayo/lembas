@@ -9,6 +9,8 @@ import styles from './RecipeInfoScreenStyles';
 import TopBarView from '../../components/TopBarView';
 import OverviewScreen from '../OverviewScreen';
 import INGScreen from '../INGScreen';
+import { RadioButton } from 'react-native-paper';
+import Colors from '../../constants/Colors';
 
 const RecipeInfoScreen = props => {
   const dispatch = useDispatch();
@@ -19,6 +21,8 @@ const RecipeInfoScreen = props => {
   );
 
   const [state, setState] = useState('overview');
+  //*radio button
+  const [measures, setMeasures] = useState('metric');
 
   const handleIng = () => {
     setState('ing');
@@ -37,9 +41,11 @@ const RecipeInfoScreen = props => {
   }
 
   //*render ingredients
-  const renderIngredients = ({ item }) => <INGScreen ing={item} />;
+  const renderIngredients = ({ item }) => (
+    <INGScreen ing={item} measures={measures} setMeasures={setMeasures} />
+  );
 
-  //* overview
+  //* render overview
   if (state === 'overview') {
     return (
       <View style={styles.container}>
@@ -50,12 +56,31 @@ const RecipeInfoScreen = props => {
         />
       </View>
     );
-    //* ingredients
+    //* render ingredients
   } else if (state === 'ing') {
     return (
       <View style={styles.container}>
         <TopBarView handleIng={handleIng} handleOverview={handleOverview} />
-        <Text>us or metric</Text>
+        <View style={styles.radioButtonContainer}>
+          <View style={styles.radioBtn}>
+            <RadioButton
+              value="us"
+              status={measures === 'us' ? 'checked' : 'unchecked'}
+              onPress={() => setMeasures('us')}
+              color={Colors.darkBlue}
+            />
+            <Text style={styles.radioBtnTitle}>US</Text>
+          </View>
+          <View style={styles.radioBtn}>
+            <RadioButton
+              value="metric"
+              status={measures === 'metric' ? 'checked' : 'unchecked'}
+              onPress={() => setMeasures('metric')}
+              color={Colors.darkBlue}
+            />
+            <Text style={styles.radioBtnTitle}>metric</Text>
+          </View>
+        </View>
         <FlatList data={extendedIng} renderItem={renderIngredients} />
       </View>
     );
