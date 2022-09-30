@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getRecipeInformationAsync } from '../../api';
 import Loading from '../../components/Loading';
 import styles from './RecipeInfoScreenStyles';
-
 import TopBarView from '../../components/TopBarView';
 import OverviewScreen from '../OverviewScreen';
 import INGScreen from '../INGScreen';
 import { RadioButton } from 'react-native-paper';
 import Colors from '../../constants/Colors';
+import StepsScreen from '../StepsScreen/StepsScreen';
 
 const RecipeInfoScreen = props => {
   const dispatch = useDispatch();
@@ -32,6 +32,11 @@ const RecipeInfoScreen = props => {
     setState('overview');
   };
 
+  const handleSteps = () => {
+    setState('steps');
+    console.log('hello');
+  };
+
   useEffect(() => {
     dispatch(getRecipeInformationAsync(id));
   }, [dispatch, id]);
@@ -49,6 +54,11 @@ const RecipeInfoScreen = props => {
   if (state === 'overview') {
     return (
       <View style={styles.container}>
+        <TopBarView
+          handleIng={handleIng}
+          handleOverview={handleOverview}
+          handleSteps={handleSteps}
+        />
         <OverviewScreen
           handleIng={handleIng}
           handleOverview={handleOverview}
@@ -60,7 +70,11 @@ const RecipeInfoScreen = props => {
   } else if (state === 'ing') {
     return (
       <View style={styles.container}>
-        <TopBarView handleIng={handleIng} handleOverview={handleOverview} />
+        <TopBarView
+          handleIng={handleIng}
+          handleOverview={handleOverview}
+          handleSteps={handleSteps}
+        />
         <View style={styles.radioButtonContainer}>
           <View style={styles.radioBtn}>
             <RadioButton
@@ -82,6 +96,18 @@ const RecipeInfoScreen = props => {
           </View>
         </View>
         <FlatList data={extendedIng} renderItem={renderIngredients} />
+      </View>
+    );
+  } else if (state === 'steps') {
+    return (
+      <View style={styles.container}>
+        <TopBarView
+          handleIng={handleIng}
+          handleOverview={handleOverview}
+          handleSteps={handleSteps}
+        />
+
+        <StepsScreen recipe={recipe} />
       </View>
     );
   }

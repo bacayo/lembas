@@ -16,7 +16,7 @@ export default StyleSheet.create({
   ingredients: {
     color: Colors.black,
     fontFamily: 'Roboto-Medium',
-    fontSize: 14,
+    fontSize: 16,
     marginLeft: 3,
     padding: 2,
   },

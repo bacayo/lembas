@@ -6,7 +6,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import styles from './TopBarViewStyles';
 import Colors from '../../constants/Colors';
 
-const TopBarView = ({ handleOverview, handleIng }) => {
+const TopBarView = ({ handleOverview, handleIng, handleSteps }) => {
   const iconSize = 35;
 
   return (
@@ -23,14 +23,14 @@ const TopBarView = ({ handleOverview, handleIng }) => {
           <Icon name="shopping-cart" color={Colors.darkBlue} size={iconSize} />
           <Text style={styles.title}>Ingredients</Text>
         </Pressable>
-        <View style={styles.innerContainer}>
+        <Pressable onPress={handleSteps} style={styles.innerContainer}>
           <Icon
             name="format-align-justify"
             color={Colors.darkBlue}
             size={iconSize}
           />
           <Text style={styles.title}>Steps</Text>
-        </View>
+        </Pressable>
         <View style={styles.innerContainer}>
           <FontAwesome
             name="heartbeat"

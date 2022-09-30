@@ -11,11 +11,11 @@ const INGScreen = ({ ing, measures, setMeasures }) => {
       <Image style={styles.image} source={{ uri: imageURL + ing.image }} />
       <Text style={styles.ingredients}>
         {measures === 'us'
-          ? ing.measures.us.amount
+          ? Math.floor(ing.measures.us.amount)
           : Math.floor(ing.measures.metric.amount)}{' '}
         {measures === 'us'
-          ? ing.measures.us.unitShort
-          : ing.measures.metric.unitShort}{' '}
+          ? ing.measures.us.unitLong
+          : ing.measures.metric.unitLong}{' '}
         {ing.name}
       </Text>
     </View>
