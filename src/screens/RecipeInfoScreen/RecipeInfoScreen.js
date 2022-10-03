@@ -14,6 +14,7 @@ import StepsScreen from '../StepsScreen';
 import NutritionScreen from '../NutritionScreen';
 import { resetNutrition } from '../../redux/recipeInfoSlice/recipeInfoSlice';
 import WinePairingScreen from '../WinePairingScreen/WinePairingScreen';
+import TipsScreen from '../TipsScreen/TipsScreen';
 
 const RecipeInfoScreen = props => {
   const dispatch = useDispatch();
@@ -49,6 +50,10 @@ const RecipeInfoScreen = props => {
     setState('wine');
   };
 
+  const handleTips = () => {
+    setState('tips');
+  };
+
   useEffect(() => {
     dispatch(getRecipeInformationAsync(id));
   }, [dispatch, id]);
@@ -72,6 +77,7 @@ const RecipeInfoScreen = props => {
           handleSteps={handleSteps}
           handleNutrition={handleNutrition}
           handleWine={handleWine}
+          handleTips={handleTips}
           recipe={recipe}
         />
         <OverviewScreen
@@ -91,6 +97,7 @@ const RecipeInfoScreen = props => {
           handleSteps={handleSteps}
           handleNutrition={handleNutrition}
           handleWine={handleWine}
+          handleTips={handleTips}
           recipe={recipe}
         />
         <View style={styles.radioButtonContainer}>
@@ -125,6 +132,7 @@ const RecipeInfoScreen = props => {
           handleSteps={handleSteps}
           handleNutrition={handleNutrition}
           handleWine={handleWine}
+          handleTips={handleTips}
           recipe={recipe}
         />
         <StepsScreen recipe={recipe} />
@@ -139,6 +147,7 @@ const RecipeInfoScreen = props => {
           handleSteps={handleSteps}
           handleNutrition={handleNutrition}
           handleWine={handleWine}
+          handleTips={handleTips}
           recipe={recipe}
         />
         <NutritionScreen recipe={recipe} nutrition={nutrition} />
@@ -153,9 +162,25 @@ const RecipeInfoScreen = props => {
           handleSteps={handleSteps}
           handleNutrition={handleNutrition}
           handleWine={handleWine}
+          handleTips={handleTips}
           recipe={recipe}
         />
         <WinePairingScreen recipe={recipe} />
+      </View>
+    );
+  } else if (state === 'tips') {
+    return (
+      <View>
+        <TopBarView
+          handleIng={handleIng}
+          handleOverview={handleOverview}
+          handleSteps={handleSteps}
+          handleNutrition={handleNutrition}
+          handleWine={handleWine}
+          handleTips={handleTips}
+          recipe={recipe}
+        />
+        <TipsScreen recipe={recipe} />
       </View>
     );
   }

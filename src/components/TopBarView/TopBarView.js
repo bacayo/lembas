@@ -12,6 +12,7 @@ const TopBarView = ({
   handleSteps,
   handleNutrition,
   handleWine,
+  handleTips,
   recipe,
 }) => {
   const iconSize = 35;
@@ -55,10 +56,10 @@ const TopBarView = ({
             </Pressable>
           )}
 
-        <View style={styles.innerContainer}>
+        <Pressable onPress={handleTips} style={styles.innerContainer}>
           <Icon name="lightbulb" color={Colors.darkBlue} size={iconSize} />
           <Text style={styles.title}>Tips</Text>
-        </View>
+        </Pressable>
       </ScrollView>
     </View>
   );
