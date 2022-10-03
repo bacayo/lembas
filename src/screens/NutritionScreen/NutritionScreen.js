@@ -4,11 +4,17 @@ import React from 'react';
 import styles from './NutritionScreenStyles';
 import { useSelector } from 'react-redux';
 import NutritionTable from '../../components/NutritionTable/NutritionTable';
+import Colors from '../../constants/Colors';
 
-const NutritionScreen = ({ recipe, good, nutrition }) => {
-  const { bad } = useSelector(state => state.recipeInfoSlice.nutrition);
+const NutritionScreen = ({ recipe, nutrition }) => {
+  const { bad, good } = useSelector(state => state.recipeInfoSlice.nutrition);
 
-  const renderNutrition = ({ item }) => <NutritionTable nutrition={item} />;
+  const renderBadNutrition = ({ item }) => (
+    <NutritionTable nutrition={item} color={Colors.red} />
+  );
+  const renderGoodNutrition = ({ item }) => (
+    <NutritionTable nutrition={item} color={Colors.blue} />
+  );
 
   return (
     <View style={styles.container}>
@@ -43,9 +49,23 @@ const NutritionScreen = ({ recipe, good, nutrition }) => {
         </View>
       </View>
       {/* end of overview */}
-      <Text style={[styles.quickview, styles.danger]}>Limit these</Text>
+
       <View style={styles.nutritionContainer}>
-        <FlatList data={bad} renderItem={renderNutrition} />
+        <FlatList
+          data={bad}
+          renderItem={renderBadNutrition}
+          ListHeaderComponent={
+            <Text style={[styles.quickview, styles.danger]}>Limit these</Text>
+          }
+          ListFooterComponent={
+            <View>
+              <Text style={[styles.quickview, styles.good]}>
+                Get Enough Of These
+              </Text>
+              <FlatList data={good} renderItem={renderGoodNutrition} />
+            </View>
+          }
+        />
       </View>
     </View>
   );

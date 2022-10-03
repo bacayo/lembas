@@ -3,9 +3,8 @@ import React from 'react';
 import { ProgressBar } from 'react-native-paper';
 
 import styles from './NutritionTableStyles';
-import Colors from '../../constants/Colors';
 
-const NutritionTable = ({ nutrition }) => {
+const NutritionTable = ({ nutrition, color }) => {
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
@@ -18,7 +17,7 @@ const NutritionTable = ({ nutrition }) => {
         <ProgressBar
           style={styles.progressBar}
           progress={nutrition.percentOfDailyNeeds / 100}
-          color={Colors.red}
+          color={color}
         />
         <Text style={styles.need}>
           {Math.floor(nutrition.percentOfDailyNeeds)}%

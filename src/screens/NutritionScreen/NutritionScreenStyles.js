@@ -19,8 +19,16 @@ export default StyleSheet.create({
     fontFamily: 'Roboto-Regular',
     fontSize: 16,
   },
+  container: {
+    flex: 1,
+    flexGrow: 1,
+  },
   danger: {
     color: Colors.red,
+    fontFamily: 'Roboto-Medium',
+  },
+  good: {
+    color: Colors.darkBlue,
     fontFamily: 'Roboto-Medium',
   },
   heading: {
@@ -30,11 +38,14 @@ export default StyleSheet.create({
     marginLeft: 20,
     marginVertical: 10,
   },
+  nutritionContainer: {
+    flex: 1,
+  },
   quickview: {
     color: Colors.black,
     fontFamily: 'Roboto-Regular',
     fontSize: 16,
-    marginLeft: 20,
+    marginLeft: 15,
     marginVertical: 5,
   },
 });

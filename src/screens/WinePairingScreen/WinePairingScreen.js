@@ -1,4 +1,11 @@
-import { View, Text, Image, TouchableOpacity, Linking } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Linking,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 
 import styles from './WinePairingScreenStyles';
@@ -11,7 +18,7 @@ const WinePairingScreen = ({ recipe }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.wineText}>{recipe.winePairing.pairingText}</Text>
       <View style={styles.wineContainer}>
         <Image
@@ -24,7 +31,7 @@ const WinePairingScreen = ({ recipe }) => {
       <TouchableOpacity onPress={handleWineLink} style={styles.linkBtn}>
         <Text style={styles.linkBtnTitle}>Buy for {productMatches.price}</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 
