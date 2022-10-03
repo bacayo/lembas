@@ -23,7 +23,14 @@ export const getRecipeInformationAsync = createAsyncThunk(
   'recipeInfoSlice/getRecipeInformationAsync',
   async id => {
     const response = await axios.get(`recipes/${id}/information`);
-    console.log(response);
+    return response.data;
+  },
+);
+
+export const getNutritionByIdAsync = createAsyncThunk(
+  'recipeInfoSlice/getNutritionByIdAsync',
+  async id => {
+    const response = await axios.get(`recipes/${id}/nutritionWidget.json`);
     return response.data;
   },
 );

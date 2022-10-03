@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getRecipeInformationAsync } from '../../api';
+import { getRecipeInformationAsync, getNutritionByIdAsync } from '../../api';
 
 const recipeInfoSlice = createSlice({
   name: 'recipeInfoSlice',
@@ -8,6 +8,17 @@ const recipeInfoSlice = createSlice({
     error: null,
     recipe: [],
     extendedIng: [],
+    nutrition: {
+      nutritionIsLoading: false,
+      nutrition: [],
+      good: [],
+      bad: [],
+    },
+  },
+  reducers: {
+    resetNutrition: (state, action) => {
+      state.nutrition.bad = [];
+    },
   },
   extraReducers: {
     [getRecipeInformationAsync.pending]: state => {
@@ -22,7 +33,22 @@ const recipeInfoSlice = createSlice({
       state.recipeIsLoading = false;
       state.error = action.error.message;
     },
+    [getNutritionByIdAsync.pending]: state => {
+      state.nutrition.nutritionIsLoading = true;
+    },
+    [getNutritionByIdAsync.fulfilled]: (state, action) => {
+      state.nutrition.nutritionIsLoading = false;
+      state.nutrition.nutrition = action.payload;
+      state.nutrition.bad = action.payload.bad;
+      state.nutrition.good = action.payload.good;
+    },
+    [getNutritionByIdAsync.rejected]: (state, action) => {
+      state.nutrition.nutritionIsLoading = false;
+      state.recipeIsLoading = false;
+      state.error = action.error.message;
+    },
   },
 });
 
 export default recipeInfoSlice.reducer;
+export const { resetNutrition } = recipeInfoSlice.actions;

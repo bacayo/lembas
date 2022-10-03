@@ -6,7 +6,14 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import styles from './TopBarViewStyles';
 import Colors from '../../constants/Colors';
 
-const TopBarView = ({ handleOverview, handleIng, handleSteps }) => {
+const TopBarView = ({
+  handleOverview,
+  handleIng,
+  handleSteps,
+  handleNutrition,
+  handleWine,
+  recipe,
+}) => {
   const iconSize = 35;
 
   return (
@@ -31,18 +38,23 @@ const TopBarView = ({ handleOverview, handleIng, handleSteps }) => {
           />
           <Text style={styles.title}>Steps</Text>
         </Pressable>
-        <View style={styles.innerContainer}>
+        <Pressable onPress={handleNutrition} style={styles.innerContainer}>
           <FontAwesome
             name="heartbeat"
             color={Colors.darkBlue}
             size={iconSize}
           />
           <Text style={styles.title}>Nutrition</Text>
-        </View>
-        <View style={styles.innerContainer}>
-          <Icon name="wine-bar" color={Colors.darkBlue} size={iconSize} />
-          <Text style={styles.title}>Wine Pairing</Text>
-        </View>
+        </Pressable>
+        {recipe.winePairing !== undefined &&
+          Object.keys(recipe.winePairing).length !== 0 &&
+          recipe.winePairing.pairedWines.length !== 0 && (
+            <Pressable onPress={handleWine} style={styles.innerContainer}>
+              <Icon name="wine-bar" color={Colors.darkBlue} size={iconSize} />
+              <Text style={styles.title}>Wine Pairing</Text>
+            </Pressable>
+          )}
+
         <View style={styles.innerContainer}>
           <Icon name="lightbulb" color={Colors.darkBlue} size={iconSize} />
           <Text style={styles.title}>Tips</Text>

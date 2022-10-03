@@ -31,7 +31,7 @@ const OverviewScreen = ({ recipe }) => {
         </View>
         {/* Likes */}
         <View style={styles.detailCardContainer}>
-          <Icon name="person" size={24} color={Colors.black} />
+          <Icon name="thumb-up" size={24} color={Colors.black} />
           <Text style={styles.textInfo}>
             {recipe.aggregateLikes} people like it
           </Text>

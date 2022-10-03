@@ -2,7 +2,7 @@ import { View, FlatList, Text } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getRecipeInformationAsync } from '../../api';
+import { getNutritionByIdAsync, getRecipeInformationAsync } from '../../api';
 import Loading from '../../components/Loading';
 import styles from './RecipeInfoScreenStyles';
 import TopBarView from '../../components/TopBarView';
@@ -10,13 +10,16 @@ import OverviewScreen from '../OverviewScreen';
 import INGScreen from '../INGScreen';
 import { RadioButton } from 'react-native-paper';
 import Colors from '../../constants/Colors';
-import StepsScreen from '../StepsScreen/StepsScreen';
+import StepsScreen from '../StepsScreen';
+import NutritionScreen from '../NutritionScreen';
+import { resetNutrition } from '../../redux/recipeInfoSlice/recipeInfoSlice';
+import WinePairingScreen from '../WinePairingScreen/WinePairingScreen';
 
 const RecipeInfoScreen = props => {
   const dispatch = useDispatch();
 
   const { id } = props.route.params;
-  const { recipe, recipeIsLoading, extendedIng } = useSelector(
+  const { recipe, recipeIsLoading, extendedIng, nutrition } = useSelector(
     state => state.recipeInfoSlice,
   );
 
@@ -34,7 +37,16 @@ const RecipeInfoScreen = props => {
 
   const handleSteps = () => {
     setState('steps');
-    console.log('hello');
+  };
+
+  const handleNutrition = () => {
+    setState('nutrition');
+    dispatch(resetNutrition());
+    dispatch(getNutritionByIdAsync(id));
+  };
+
+  const handleWine = () => {
+    setState('wine');
   };
 
   useEffect(() => {
@@ -58,6 +70,9 @@ const RecipeInfoScreen = props => {
           handleIng={handleIng}
           handleOverview={handleOverview}
           handleSteps={handleSteps}
+          handleNutrition={handleNutrition}
+          handleWine={handleWine}
+          recipe={recipe}
         />
         <OverviewScreen
           handleIng={handleIng}
@@ -74,6 +89,9 @@ const RecipeInfoScreen = props => {
           handleIng={handleIng}
           handleOverview={handleOverview}
           handleSteps={handleSteps}
+          handleNutrition={handleNutrition}
+          handleWine={handleWine}
+          recipe={recipe}
         />
         <View style={styles.radioButtonContainer}>
           <View style={styles.radioBtn}>
@@ -105,9 +123,39 @@ const RecipeInfoScreen = props => {
           handleIng={handleIng}
           handleOverview={handleOverview}
           handleSteps={handleSteps}
+          handleNutrition={handleNutrition}
+          handleWine={handleWine}
+          recipe={recipe}
         />
-
         <StepsScreen recipe={recipe} />
+      </View>
+    );
+  } else if (state === 'nutrition') {
+    return (
+      <View style={styles.container}>
+        <TopBarView
+          handleIng={handleIng}
+          handleOverview={handleOverview}
+          handleSteps={handleSteps}
+          handleNutrition={handleNutrition}
+          handleWine={handleWine}
+          recipe={recipe}
+        />
+        <NutritionScreen recipe={recipe} nutrition={nutrition} />
+      </View>
+    );
+  } else if (state === 'wine') {
+    return (
+      <View style={styles.container}>
+        <TopBarView
+          handleIng={handleIng}
+          handleOverview={handleOverview}
+          handleSteps={handleSteps}
+          handleNutrition={handleNutrition}
+          handleWine={handleWine}
+          recipe={recipe}
+        />
+        <WinePairingScreen recipe={recipe} />
       </View>
     );
   }
