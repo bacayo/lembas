@@ -170,7 +170,7 @@ const RecipeInfoScreen = props => {
     );
   } else if (state === 'tips') {
     return (
-      <View>
+      <View style={styles.container}>
         <TopBarView
           handleIng={handleIng}
           handleOverview={handleOverview}

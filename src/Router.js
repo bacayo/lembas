@@ -14,11 +14,21 @@ const Router = () => {
       <Tab.Navigator
         screenOptions={{
           tabBarIcon: () => <Icon name="home" size={30} color={Colors.blue} />,
+          tabBarLabelStyle: {
+            fontFamily: 'Roboto-Medium',
+            fontSize: 12,
+          },
+          tabBarStyle: {
+            backgroundColor: Colors.lightBlue,
+          },
         }}>
         <Tab.Screen
           name="HomeStack"
           component={HomeStack}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: false,
+            title: 'Home',
+          }}
         />
       </Tab.Navigator>
     </NavigationContainer>

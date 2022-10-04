@@ -2,6 +2,7 @@ import { View, Text } from 'react-native';
 import React from 'react';
 import { ProgressBar } from 'react-native-paper';
 
+import { percentOfDailyNeeds, floorNumber } from '../../constants/Constants';
 import styles from './NutritionTableStyles';
 
 const NutritionTable = ({ nutrition, color }) => {
@@ -16,11 +17,12 @@ const NutritionTable = ({ nutrition, color }) => {
       <View style={styles.bar}>
         <ProgressBar
           style={styles.progressBar}
-          progress={nutrition.percentOfDailyNeeds / 100}
+          progress={percentOfDailyNeeds(nutrition.percentOfDailyNeeds)}
           color={color}
         />
         <Text style={styles.need}>
-          {Math.floor(nutrition.percentOfDailyNeeds)}%
+          {/* {Math.floor(nutrition.percentOfDailyNeeds)}% */}
+          {floorNumber(nutrition.percentOfDailyNeeds)}%
         </Text>
       </View>
     </View>

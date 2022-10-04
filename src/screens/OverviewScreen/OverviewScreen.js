@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import styles from './OverviewScreenStyles';
 import Colors from '../../constants/Colors';
+import { fixNumber } from '../../constants/Constants';
 
 const OverviewScreen = ({ recipe }) => {
   return (
@@ -40,7 +41,8 @@ const OverviewScreen = ({ recipe }) => {
         <View style={styles.detailCardContainer}>
           <Icon name="attach-money" size={24} color={Colors.black} />
           <Text style={styles.textInfo}>
-            {(Number(recipe.pricePerServing) / 100).toFixed(2)} per serving
+            {/* {(Number(recipe.pricePerServing) / 100).toFixed(2)} per serving */}
+            {fixNumber(recipe.pricePerServing)} per serving
           </Text>
         </View>
       </View>
