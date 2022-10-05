@@ -3,6 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import HomeStack from './navigation/HomeStack/HomeStack';
+import RecipeStack from './navigation/RecipeStack/RecipeStack';
+import ProductStack from './navigation/ProductStack/ProductStack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from './constants/Colors';
 
@@ -29,6 +31,11 @@ const Router = () => {
             headerShown: false,
             title: 'Home',
           }}
+        />
+        <Tab.Screen
+          name="ProductStack"
+          component={ProductStack}
+          options={{ headerShown: false, title: 'Product' }}
         />
       </Tab.Navigator>
     </NavigationContainer>
