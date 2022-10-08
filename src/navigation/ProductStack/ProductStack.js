@@ -7,20 +7,29 @@ import ProductScreen from '../../screens/ProductScreen';
 
 const ProductStack = () => {
   const Stack = createNativeStackNavigator();
+
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerTitleStyle: {
+          color: Colors.black,
+          fontFamily: 'Roboto-Medium',
+          fontSize: 20,
+        },
+      }}>
       <Stack.Screen
         name="ProductScreen"
         component={ProductScreen}
         options={{
           title: 'Search Products',
-          headerStyle: { backgroundColor: Colors.primaryColor },
-          headerTintColor: Colors.black,
         }}
       />
       <Stack.Screen
         name="ProductDetailScreen"
         component={ProductDetailScreen}
+        options={({ route }) => ({
+          title: route.params.title,
+        })}
       />
     </Stack.Navigator>
   );
