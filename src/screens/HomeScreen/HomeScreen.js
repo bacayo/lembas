@@ -12,7 +12,9 @@ const HomeScreen = () => {
 
   const { recipes, isLoading } = useSelector(state => state.randomRecipeSlice);
 
-  const renderRecipe = ({ item }) => <FoodCard food={item} />;
+  const renderRecipe = ({ item }) => (
+    <FoodCard food={item} screen={'RecipeInfoScreen'} />
+  );
 
   useEffect(() => {
     dispatch(getRandomRecipeAsync());

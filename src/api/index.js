@@ -34,3 +34,22 @@ export const getNutritionByIdAsync = createAsyncThunk(
     return response.data;
   },
 );
+
+export const getProductsAsync = createAsyncThunk(
+  'productSlice/getProductsAsync',
+  async data => {
+    const params = new URLSearchParams();
+    params.append('query', data.query);
+    params.append('number', data.number);
+    const response = await axios.get('food/products/search', { params });
+    return response.data;
+  },
+);
+
+export const getProductInfoAsync = createAsyncThunk(
+  'productSlice/getProductInfoAsync',
+  async id => {
+    const response = await axios.get(`food/products/${id}`);
+    return response.data;
+  },
+);

@@ -1,14 +1,14 @@
 import { Text, Pressable, ImageBackground, View } from 'react-native';
 import React from 'react';
-
-import styles from './FoodCardStyles';
 import { useNavigation } from '@react-navigation/native';
 
-const FoodCard = ({ food }) => {
+import styles from './FoodCardStyles';
+
+const FoodCard = ({ food, screen }) => {
   const navigation = useNavigation();
 
   const navigateRecipeInfo = () => {
-    navigation.navigate('RecipeInfoScreen', { id: food.id, title: food.title });
+    navigation.navigate(screen, { id: food.id, title: food.title });
   };
 
   return (

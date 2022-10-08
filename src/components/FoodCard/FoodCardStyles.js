@@ -7,9 +7,10 @@ export default StyleSheet.create({
     marginVertical: 5,
   },
   image: {
-    borderRadius: 5,
-    height: 200,
-    justifyContent: 'center',
+    // borderRadius: 5,
+    // height: 200,
+    // justifyContent: 'center',
+    aspectRatio: 1,
     resizeMode: 'contain',
   },
   test: {

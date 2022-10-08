@@ -1,7 +1,9 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ProductScreen from '../../screens/ProductScreen';
+
 import Colors from '../../constants/Colors';
+import ProductDetailScreen from '../../screens/ProductDetailScreen';
+import ProductScreen from '../../screens/ProductScreen';
 
 const ProductStack = () => {
   const Stack = createNativeStackNavigator();
@@ -15,6 +17,10 @@ const ProductStack = () => {
           headerStyle: { backgroundColor: Colors.primaryColor },
           headerTintColor: Colors.black,
         }}
+      />
+      <Stack.Screen
+        name="ProductDetailScreen"
+        component={ProductDetailScreen}
       />
     </Stack.Navigator>
   );
