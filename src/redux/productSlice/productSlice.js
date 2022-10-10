@@ -8,6 +8,15 @@ const productSlice = createSlice({
     error: null,
     product: [],
     productInfo: [],
+    favoriteProducts: [],
+  },
+  reducers: {
+    addToFavorites: (state, action) => {
+      state.favoriteProducts.push(state.productInfo);
+    },
+    removeFromFavorites: (state, action) => {
+      console.log(state.favoriteProducts);
+    },
   },
   extraReducers: {
     [getProductsAsync.pending]: state => {
@@ -36,3 +45,4 @@ const productSlice = createSlice({
 });
 
 export default productSlice.reducer;
+export const { addToFavorites } = productSlice.actions;

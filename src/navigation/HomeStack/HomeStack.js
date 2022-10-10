@@ -1,30 +1,38 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Text } from 'react-native';
 
 import HomeScreen from '../../screens/HomeScreen';
 import INGScreen from '../../screens/INGScreen';
 import RecipeInfoScreen from '../../screens/RecipeInfoScreen';
 import Colors from '../../constants/Colors';
+import AddFavorite from '../../components/AddFavorite';
+import ScreenNames from '../../constants/ScreenNames';
 
 const HomeStack = () => {
   const Stack = createNativeStackNavigator();
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{ headerTitleStyle: { fontFamily: 'Roboto-Medium' } }}>
       <Stack.Screen
-        name="HomeScreen"
+        name={ScreenNames.homeScreen}
         component={HomeScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="RecipeInfoScreen"
+        name={ScreenNames.recipeInfoScreen}
         component={RecipeInfoScreen}
         options={({ route }) => ({
           title: route.params.title,
           headerStyle: { backgroundColor: Colors.lightBlue },
+          headerRight: () => <AddFavorite />,
         })}
       />
-      <Stack.Screen name="INGScreen" component={INGScreen} />
+      <Stack.Screen
+        name={ScreenNames.ingredientsScreen}
+        component={INGScreen}
+      />
     </Stack.Navigator>
   );
 };

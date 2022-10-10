@@ -6,18 +6,10 @@ import HomeStack from './navigation/HomeStack/HomeStack';
 import ProductStack from './navigation/ProductStack/ProductStack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from './constants/Colors';
+import ProfileStack from './navigation/ProfileStack/ProfileStack';
 
 const Router = () => {
   const Tab = createBottomTabNavigator();
-
-  // tabBarStyle: {
-  //   backgroundColor: Colors.lightBlue,
-  // },
-
-  // tabBarLabelStyle: {
-  //   fontFamily: 'Roboto-Medium',
-  //   fontSize: 12,
-  // },
 
   return (
     <NavigationContainer>
@@ -34,9 +26,11 @@ const Router = () => {
             let iconName;
             // color = Colors.darkBlue;
             if (route.name === 'HomeStack') {
-              iconName = focused ? 'home' : 'home-filled';
+              iconName = 'home';
             } else if (route.name === 'ProductStack') {
-              iconName = focused ? 'list' : 'list-alt';
+              iconName = 'list';
+            } else if (route.name === 'ProfileStack') {
+              iconName = 'account-circle';
             }
             return <Icon name={iconName} size={size} color={color} />;
           },
@@ -56,6 +50,11 @@ const Router = () => {
           name="ProductStack"
           component={ProductStack}
           options={{ headerShown: false, title: 'Product' }}
+        />
+        <Tab.Screen
+          name="ProfileStack"
+          component={ProfileStack}
+          options={{ headerShown: false, title: 'Profile' }}
         />
       </Tab.Navigator>
     </NavigationContainer>
