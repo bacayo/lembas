@@ -5,8 +5,8 @@ const Loading = () => {
   return (
     <Lottie
       source={require('../../../assets/448-ripple-loading-animation.json')}
-      autoPlay
-      loop
+      autoPlay={true}
+      loop={true}
     />
   );
 };

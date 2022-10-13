@@ -7,6 +7,7 @@ import ProductStack from './navigation/ProductStack/ProductStack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from './constants/Colors';
 import ProfileStack from './navigation/ProfileStack/ProfileStack';
+import RecipeStack from './navigation/RecipeStack/RecipeStack';
 
 const Router = () => {
   const Tab = createBottomTabNavigator();
@@ -22,6 +23,7 @@ const Router = () => {
             fontFamily: 'Roboto-Medium',
             fontSize: 12,
           },
+          tabBarHideOnKeyboard: true,
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             // color = Colors.darkBlue;
@@ -31,6 +33,8 @@ const Router = () => {
               iconName = 'list';
             } else if (route.name === 'ProfileStack') {
               iconName = 'account-circle';
+            } else if (route.name === 'RecipeStack') {
+              iconName = 'local-pizza';
             }
             return <Icon name={iconName} size={size} color={color} />;
           },
@@ -45,6 +49,11 @@ const Router = () => {
             headerShown: false,
             title: 'Home',
           }}
+        />
+        <Tab.Screen
+          name="RecipeStack"
+          component={RecipeStack}
+          options={{ title: 'Recipe', headerShown: false }}
         />
         <Tab.Screen
           name="ProductStack"

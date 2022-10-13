@@ -1,11 +1,13 @@
 import { FlatList, Keyboard, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import { Searchbar, ActivityIndicator, MD2Colors } from 'react-native-paper';
+import React, { useState } from 'react';
+import { ActivityIndicator } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './ProductScreenStyles';
 import { getProductsAsync } from '../../api';
 import FoodCard from '../../components/FoodCard/FoodCard';
+import SearchBar from '../../components/SearchBar';
+import Colors from '../../constants/Colors';
 
 const ProductScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -33,19 +35,14 @@ const ProductScreen = () => {
     dispatch(getProductsAsync({ query: searchQuery, number: limit }));
   };
 
-  // useEffect(() => {
-  //   dispatch(getProductsAsync({ query: searchQuery, number: limit }));
-  // }, []);
-
   return (
     <View style={styles.container}>
-      <Searchbar
-        placeholder="Search"
+      <SearchBar
+        placeholder={'Search'}
         onChangeText={onChangeSearch}
         value={searchQuery}
-        icon="search"
-        elevation={5}
-        onIconPress={() => searchProducts()}
+        onIconPress={searchProducts}
+        onSubmitEditing={searchProducts}
       />
       <FlatList
         data={product}
@@ -56,7 +53,7 @@ const ProductScreen = () => {
           productIsLoading && (
             <ActivityIndicator
               animating={true}
-              color={MD2Colors.red800}
+              color={Colors.red}
               size={'large'}
             />
           )

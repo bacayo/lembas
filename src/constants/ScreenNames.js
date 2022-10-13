@@ -5,4 +5,5 @@ export default {
   homeScreen: 'HomeScreen',
   recipeInfoScreen: 'RecipeInfoScreen',
   ingredientsScreen: 'INGScreen',
+  favoriteRecipe: 'FavoriteRecipeScreen',
 };

@@ -1,13 +1,14 @@
 import { useWindowDimensions } from 'react-native';
 import React, { useEffect } from 'react';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Colors from '../../constants/Colors';
 import { getProductInfoAsync } from '../../api';
 import ProductOverviewScreen from './ProductOverviewScreen/';
 import ProductIngScreen from './ProductIngScreen/';
+import Loading from '../../components/Loading';
 
 const getTabBarIcon = props => {
   const { route } = props;
@@ -31,6 +32,8 @@ const ProductDetailScreen = props => {
     { key: 'ingredients', title: 'Ingredients' },
   ]);
 
+  const { productIsLoading } = useSelector(state => state.productSlice);
+
   const dispatch = useDispatch();
 
   const { id } = props.route.params;
@@ -38,6 +41,10 @@ const ProductDetailScreen = props => {
   useEffect(() => {
     dispatch(getProductInfoAsync(id));
   }, [dispatch, id]);
+
+  if (productIsLoading) {
+    return <Loading />;
+  }
 
   return (
     <TabView

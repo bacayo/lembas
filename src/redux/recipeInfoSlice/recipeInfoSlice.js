@@ -7,6 +7,7 @@ const recipeInfoSlice = createSlice({
     recipeIsLoading: false,
     error: null,
     recipe: [],
+    favoriteRecipes: [],
     extendedIng: [],
     nutrition: {
       nutritionIsLoading: false,
@@ -18,6 +19,9 @@ const recipeInfoSlice = createSlice({
   reducers: {
     resetNutrition: (state, action) => {
       state.nutrition.bad = [];
+    },
+    addFavoriteRecipe: (state, action) => {
+      state.favoriteRecipes.push(state.recipe);
     },
   },
   extraReducers: {
@@ -51,4 +55,4 @@ const recipeInfoSlice = createSlice({
 });
 
 export default recipeInfoSlice.reducer;
-export const { resetNutrition } = recipeInfoSlice.actions;
+export const { resetNutrition, addFavoriteRecipe } = recipeInfoSlice.actions;

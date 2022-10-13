@@ -7,12 +7,4 @@ export default StyleSheet.create({
     backgroundColor: Colors.white,
     flex: 1,
   },
-  emptyList: {
-    alignSelf: 'center',
-    color: Colors.black,
-    fontFamily: 'Roboto-Regular',
-    fontSize: 16,
-    margin: 5,
-    padding: 5,
-  },
 });

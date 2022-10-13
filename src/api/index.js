@@ -8,6 +8,18 @@ axios.defaults.baseURL = BASE_URL;
 axios.defaults.headers['X-API-KEY'] = API_KEY;
 axios.defaults.headers['Content-Type'] = 'application/json';
 
+export const searchRecipeAsync = createAsyncThunk(
+  'recipeSlice/searchRecipeAsync',
+  async data => {
+    const params = new URLSearchParams();
+    params.append('query', data.query);
+    params.append('number', data.number);
+    console.log('recipes/complexSearch' + params);
+    const response = await axios.get('recipes/complexSearch', { params });
+    return response.data;
+  },
+);
+
 export const getRandomRecipeAsync = createAsyncThunk(
   'randomRecipeSlice/getRandomRecipeAsync',
   async thunkAPI => {

@@ -5,9 +5,12 @@ import { useSelector } from 'react-redux';
 import styles from './NutritionScreenStyles';
 import NutritionTable from '../../components/NutritionTable';
 import Colors from '../../constants/Colors';
+import Loading from '../../components/Loading';
 
 const NutritionScreen = ({ recipe, nutrition }) => {
-  const { bad, good } = useSelector(state => state.recipeInfoSlice.nutrition);
+  const { bad, good, nutritionIsLoading } = useSelector(
+    state => state.recipeInfoSlice.nutrition,
+  );
 
   const renderBadNutrition = ({ item }) => (
     <NutritionTable nutrition={item} color={Colors.red} />
@@ -15,6 +18,10 @@ const NutritionScreen = ({ recipe, nutrition }) => {
   const renderGoodNutrition = ({ item }) => (
     <NutritionTable nutrition={item} color={Colors.blue} />
   );
+
+  if (nutritionIsLoading) {
+    return <Loading />;
+  }
 
   return (
     <View style={styles.container}>
