@@ -23,6 +23,13 @@ const recipeInfoSlice = createSlice({
     addFavoriteRecipe: (state, action) => {
       state.favoriteRecipes.push(state.recipe);
     },
+    removeFavoriteRecipe: (state, action) => {
+      const index = state.favoriteRecipes
+        .map(item => item.id)
+        .indexOf(action.payload);
+
+      state.favoriteRecipes.splice(index, 1);
+    },
   },
   extraReducers: {
     [getRecipeInformationAsync.pending]: state => {
@@ -55,4 +62,5 @@ const recipeInfoSlice = createSlice({
 });
 
 export default recipeInfoSlice.reducer;
-export const { resetNutrition, addFavoriteRecipe } = recipeInfoSlice.actions;
+export const { resetNutrition, addFavoriteRecipe, removeFavoriteRecipe } =
+  recipeInfoSlice.actions;

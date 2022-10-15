@@ -15,7 +15,13 @@ const productSlice = createSlice({
       state.favoriteProducts.push(state.productInfo);
     },
     removeFromFavorites: (state, action) => {
-      console.log(state.favoriteProducts);
+      // index = a.findIndex(x => x.prop2 ==="yutu");
+      // const index = state.favoriteProducts.map(item => item.id);
+      const index = state.favoriteProducts
+        .map(item => item.id)
+        .indexOf(action.payload);
+      console.log(index);
+      state.favoriteProducts.splice(index, 1);
     },
   },
   extraReducers: {
@@ -45,4 +51,4 @@ const productSlice = createSlice({
 });
 
 export default productSlice.reducer;
-export const { addToFavorites } = productSlice.actions;
+export const { addToFavorites, removeFromFavorites } = productSlice.actions;
