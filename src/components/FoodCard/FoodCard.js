@@ -25,23 +25,37 @@ const FoodCard = ({ food, screen }) => {
     dispatch(removeFavoriteRecipe(food.id));
   };
 
+  const alertProductBtn = [
+    {
+      text: 'Cancel',
+      onPress: null,
+      style: 'cancel',
+    },
+    {
+      text: 'OK',
+      onPress: handleFavoriteProduct,
+    },
+  ];
+
+  const alertRecipeBtn = [
+    {
+      text: 'Cancel',
+      onPress: null,
+      style: 'cancel',
+    },
+    {
+      text: 'OK',
+      onPress: handleRecipeFavorite,
+    },
+  ];
+
   //* This alert will be changed with paper modal
   const removeFav = () => {
     if (route.name === ScreenNames.favoritesScreen) {
       Alert.alert(
         'Delete Product',
         'This will be removed from your favorite list',
-        [
-          {
-            text: 'Cancel',
-            onPress: null,
-            style: 'cancel',
-          },
-          {
-            text: 'OK',
-            onPress: handleFavoriteProduct,
-          },
-        ],
+        alertProductBtn,
       );
 
       //*dispatch remove fav products
@@ -50,16 +64,7 @@ const FoodCard = ({ food, screen }) => {
       Alert.alert(
         'Delete Recipe',
         'This will be removed from your favorite list',
-        [
-          {
-            text: 'Cancel',
-            style: 'cancel',
-          },
-          {
-            text: 'OK',
-            onPress: handleRecipeFavorite,
-          },
-        ],
+        alertRecipeBtn,
       );
     }
   };

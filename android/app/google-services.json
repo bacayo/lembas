@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "506712018213",
+    "project_id": "lembas-32e60",
+    "storage_bucket": "lembas-32e60.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506712018213:android:42233cae14a6e4e9491ecc",
+        "android_client_info": {
+          "package_name": "com.lembas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "506712018213-ggqsnrgrnioolpusco4ukvk2mhedi9ol.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwYl9QOYTs5l0NcFUIA3rmhMdARYJGVII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "506712018213-ggqsnrgrnioolpusco4ukvk2mhedi9ol.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
