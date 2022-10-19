@@ -9,4 +9,5 @@ export default {
   gray: '#eeeeee',
   link: '#0000ee',
   white: '#ffffff',
+  placeholder: '#a3a8b1',
 };

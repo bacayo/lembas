@@ -7,6 +7,8 @@ import RecipeInfoScreen from '../../screens/RecipeInfoScreen';
 import Colors from '../../constants/Colors';
 import AddFavorite from '../../components/AddFavorite';
 import ScreenNames from '../../constants/ScreenNames';
+import LoginScreen from '../../screens/LoginScreen';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 const HomeStack = () => {
   const Stack = createNativeStackNavigator();
@@ -14,6 +16,13 @@ const HomeStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{ headerTitleStyle: { fontFamily: 'Roboto-Medium' } }}>
+      <Stack.Screen
+        name={ScreenNames.loginScreen}
+        component={LoginScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Stack.Screen
         name={ScreenNames.homeScreen}
         component={HomeScreen}

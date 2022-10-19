@@ -6,4 +6,5 @@ export default {
   recipeInfoScreen: 'RecipeInfoScreen',
   ingredientsScreen: 'INGScreen',
   favoriteRecipe: 'FavoriteRecipeScreen',
+  loginScreen: 'LoginScreen',
 };

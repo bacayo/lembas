@@ -20,7 +20,6 @@ const SearchBar = ({
         placeholder={placeholder}
         onSubmitEditing={onSubmitEditing}
         onIconPress={onIconPress}
-        icon="search"
         elevation={4}
         iconColor={Colors.blue}
         inputStyle={styles.inputStyle}
