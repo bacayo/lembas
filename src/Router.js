@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  getFocusedRouteNameFromRoute,
-  NavigationContainer,
-} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import HomeStack from './navigation/HomeStack/HomeStack';
@@ -11,7 +8,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from './constants/Colors';
 import ProfileStack from './navigation/ProfileStack/ProfileStack';
 import RecipeStack from './navigation/RecipeStack/RecipeStack';
-import ScreenNames from './constants/ScreenNames';
 
 const Router = () => {
   const Tab = createBottomTabNavigator();

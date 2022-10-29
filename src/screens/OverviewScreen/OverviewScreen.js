@@ -8,7 +8,7 @@ import { fixNumber } from '../../constants/Constants';
 
 const OverviewScreen = ({ recipe }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.title}>{recipe.title}</Text>
       <Image style={styles.image} source={{ uri: recipe.image }} />
       <Text

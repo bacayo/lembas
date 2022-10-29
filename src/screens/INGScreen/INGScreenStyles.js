@@ -6,6 +6,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.white,
     flexDirection: 'row',
+    flex: 1,
     marginHorizontal: 5,
   },
   image: {

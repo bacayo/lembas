@@ -23,7 +23,7 @@ const AddFavorite = () => {
 
   return (
     <IconButton
-      icon="favorite-border"
+      icon="cards-heart"
       iconColor={Colors.red}
       size={30}
       onPress={handleFavorite}
