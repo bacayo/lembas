@@ -10,6 +10,17 @@ export default StyleSheet.create({
     backgroundColor: Colors.white,
     flex: 1,
   },
+  noWine: {
+    color: Colors.black,
+    fontFamily: 'Roboto-Medium',
+    fontSize: 16,
+    padding: 10,
+  },
+  noWineContainer: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+  },
   radioBtn: {
     alignItems: 'center',
     flexDirection: 'row',
@@ -26,5 +37,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     width: '100%',
+  },
+  tabBar: {
+    backgroundColor: Colors.red,
+    width: 'auto',
   },
 });

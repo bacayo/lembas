@@ -8,6 +8,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flex: 1,
     marginHorizontal: 5,
+    marginTop: 10,
   },
   image: {
     height: 50,

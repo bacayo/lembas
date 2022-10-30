@@ -11,7 +11,7 @@ import React from 'react';
 import styles from './WinePairingScreenStyles';
 
 const WinePairingScreen = ({ recipe }) => {
-  const productMatches = recipe.winePairing.productMatches[0];
+  const productMatches = recipe?.winePairing?.productMatches[0];
 
   const handleWineLink = () => {
     Linking.openURL(productMatches.link);

@@ -55,7 +55,6 @@ const TopBarView = ({
               <Text style={styles.title}>Wine Pairing</Text>
             </Pressable>
           )}
-
         <Pressable onPress={handleTips} style={styles.innerContainer}>
           <Icon name="lightbulb" color={Colors.darkBlue} size={iconSize} />
           <Text style={styles.title}>Tips</Text>
