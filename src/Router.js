@@ -18,6 +18,10 @@ const Router = () => {
         screenOptions={({ route }) => ({
           tabBarStyle: {
             backgroundColor: Colors.lightBlue,
+            marginHorizontal: 10,
+            bottom: 10,
+            borderRadius: 5,
+            elevation: 5,
           },
 
           tabBarLabelStyle: {
