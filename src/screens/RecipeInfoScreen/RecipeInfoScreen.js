@@ -13,14 +13,20 @@ import OverviewScreen from '../OverviewScreen';
 import StepsScreen from '../StepsScreen';
 import TipsScreen from '../TipsScreen/TipsScreen';
 import WinePairingScreen from '../WinePairingScreen/WinePairingScreen';
+import Loading from '../../components/Loading';
 
 import Colors from '../../constants/Colors';
 import styles from './RecipeInfoScreenStyles';
 
 const RecipeInfoScreen = props => {
-  const { recipe, extendedIng, nutrition } = useSelector(
+  const { recipe, extendedIng, nutrition, recipeIsLoading } = useSelector(
     state => state.recipeInfoSlice,
   );
+
+  const uniqueIngredients = extendedIng.filter(
+    ({ id }, i, _arr) => _arr.findIndex(elem => elem.id === id) === i,
+  );
+
   const [measures, setMeasures] = useState('metric');
   //* routes for tab view
   const [routes] = useState([
@@ -39,6 +45,7 @@ const RecipeInfoScreen = props => {
   let isWine;
   const iconSize = 25;
 
+  //* check wine pairing if it is empty or not
   const checkWine = () => {
     if (
       recipe.winePairing !== undefined &&
@@ -46,10 +53,8 @@ const RecipeInfoScreen = props => {
       recipe.winePairing.pairedWines.length !== 0
     ) {
       isWine = true;
-      console.log(isWine);
     } else {
       isWine = false;
-      console.log(isWine);
     }
   };
 
@@ -98,7 +103,7 @@ const RecipeInfoScreen = props => {
         return (
           <FlatList
             style={styles.flatlistContainer}
-            data={extendedIng}
+            data={uniqueIngredients}
             renderItem={renderIng}
             ListHeaderComponent={MeasurementButtons}
           />
@@ -122,8 +127,8 @@ const RecipeInfoScreen = props => {
     }
   };
   //* tab bar icon render
-  const getTabBarIcon = props => {
-    const { route } = props;
+  const getTabBarIcon = iconProps => {
+    const { route } = iconProps;
     if (route.key === 'overview') {
       return <Icon name="folder" size={iconSize} color={Colors.gray} />;
     } else if (route.key === 'ingredients') {
@@ -143,18 +148,22 @@ const RecipeInfoScreen = props => {
     }
   };
 
+  if (recipeIsLoading) {
+    return <Loading />;
+  }
+
   return (
     <TabView
       navigationState={{ index, routes }}
       renderScene={renderScene}
       onIndexChange={setIndex}
       initialLayout={{ width: Dimensions.get('window').width }}
-      renderTabBar={props => (
+      renderTabBar={tabBarProps => (
         <TabBar
-          {...props}
+          {...tabBarProps}
           scrollEnabled
           indicatorStyle={{ backgroundColor: Colors.white }}
-          renderIcon={props => getTabBarIcon(props)}
+          renderIcon={icon => getTabBarIcon(icon)}
           style={styles.tabBar}
         />
       )}
