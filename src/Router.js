@@ -11,7 +11,6 @@ import RecipeStack from './navigation/RecipeStack/RecipeStack';
 
 const Router = () => {
   const Tab = createBottomTabNavigator();
-
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -23,7 +22,6 @@ const Router = () => {
             borderRadius: 5,
             elevation: 5,
           },
-
           tabBarLabelStyle: {
             fontFamily: 'Roboto-Medium',
             fontSize: 12,

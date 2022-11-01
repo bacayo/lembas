@@ -5,7 +5,6 @@ import InputCard from '../../components/InputCard';
 import styles from './LoginScreenStyles';
 import MainButton from '../../components/MainButton';
 import SocialButton from '../../components/SocialButton';
-import ScreenNames from '../../constants/ScreenNames';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');

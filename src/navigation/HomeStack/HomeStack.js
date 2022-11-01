@@ -10,8 +10,27 @@ import ScreenNames from '../../constants/ScreenNames';
 import LoginScreen from '../../screens/LoginScreen';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
-const HomeStack = () => {
+const HomeStack = ({ navigation, route }) => {
   const Stack = createNativeStackNavigator();
+  React.useEffect(() => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+
+    //! why routename returns undefined first start of the app
+    if (routeName === 'LoginScreen' || routeName === undefined) {
+      console.log(routeName);
+      navigation.setOptions({ tabBarStyle: { display: 'none' } });
+    } else {
+      navigation.setOptions({
+        tabBarStyle: {
+          backgroundColor: Colors.lightBlue,
+          marginHorizontal: 10,
+          bottom: 10,
+          borderRadius: 5,
+          elevation: 5,
+        },
+      });
+    }
+  }, [navigation, route]);
 
   return (
     <Stack.Navigator
@@ -36,10 +55,6 @@ const HomeStack = () => {
           headerStyle: { backgroundColor: Colors.lightBlue },
           headerRight: () => <AddFavorite />,
         })}
-      />
-      <Stack.Screen
-        name={ScreenNames.ingredientsScreen}
-        component={INGScreen}
       />
     </Stack.Navigator>
   );
