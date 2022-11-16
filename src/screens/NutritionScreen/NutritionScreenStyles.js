@@ -3,11 +3,14 @@ import Colors from '../../constants/Colors';
 
 export default StyleSheet.create({
   chip: {
+    backgroundColor: Colors.gray,
     borderColor: Colors.lightBlue,
-    borderWidth: 1,
+    borderRadius: 5,
+    borderWidth: 2,
+    elevation: 5,
     marginHorizontal: 5,
     marginVertical: 5,
-    padding: 4,
+    padding: 5,
   },
   chipContainer: {
     flexDirection: 'row',
@@ -26,6 +29,9 @@ export default StyleSheet.create({
   danger: {
     color: Colors.red,
     fontFamily: 'Roboto-Medium',
+  },
+  footerContainer: {
+    paddingBottom: 20,
   },
   good: {
     color: Colors.darkBlue,

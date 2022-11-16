@@ -5,6 +5,7 @@ import randomRecipeSlice from './randomRecipe/randomRecipeSlice';
 import recipeInfoSlice from './recipeInfoSlice/recipeInfoSlice';
 import productSlice from './productSlice/productSlice';
 import recipeSlice from './recipeInfoSlice/recipeSlice';
+import userSlice from './userSlice/userSlice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     recipeInfoSlice,
     productSlice,
     recipeSlice,
+    // userSlice,
   },
   middleware: applyMiddleware => applyMiddleware().concat(logger),
 });

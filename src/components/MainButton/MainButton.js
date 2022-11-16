@@ -4,12 +4,8 @@ import { Button } from 'react-native-paper';
 
 import styles from './MainButtonStyles';
 import Colors from '../../constants/Colors';
-import { useNavigation } from '@react-navigation/native';
-import ScreenNames from '../../constants/ScreenNames';
 
-const MainButton = ({ icon, text }) => {
-  const navigation = useNavigation();
-
+const MainButton = ({ icon, text, onPress }) => {
   return (
     <Button
       style={styles.btn}
@@ -17,7 +13,7 @@ const MainButton = ({ icon, text }) => {
       textColor={Colors.white}
       icon={icon}
       mode="elevated"
-      onPress={() => navigation.navigate(ScreenNames.homeScreen)}>
+      onPress={onPress}>
       <Text>{text}</Text>
     </Button>
   );

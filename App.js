@@ -16,12 +16,3 @@ const App = () => {
 };
 
 export default App;
-
-// {
-//   /* <PaperProvider
-// settings={{
-//   icon: props => <MaterialIcons {...props} />,
-// }}>
-// <Router />
-// </PaperProvider> */
-// }

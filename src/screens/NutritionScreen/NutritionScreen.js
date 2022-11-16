@@ -5,12 +5,10 @@ import { useSelector } from 'react-redux';
 import styles from './NutritionScreenStyles';
 import NutritionTable from '../../components/NutritionTable';
 import Colors from '../../constants/Colors';
-import Loading from '../../components/Loading';
+import ChipCard from '../../components/ChipCard/ChipCard';
 
 const NutritionScreen = ({ recipe, nutrition }) => {
-  const { bad, good, nutritionIsLoading } = useSelector(
-    state => state.recipeInfoSlice.nutrition,
-  );
+  const { bad, good } = useSelector(state => state.recipeInfoSlice.nutrition);
 
   const renderBadNutrition = ({ item }) => (
     <NutritionTable nutrition={item} color={Colors.red} />
@@ -19,9 +17,13 @@ const NutritionScreen = ({ recipe, nutrition }) => {
     <NutritionTable nutrition={item} color={Colors.blue} />
   );
 
-  if (nutritionIsLoading) {
-    return <Loading />;
-  }
+  const strings = {
+    calories: ' calories',
+    carbs: ' carbs',
+    protein: ' protein',
+    fat: ' fat',
+    healthScore: '% health score',
+  };
 
   return (
     <View style={styles.container}>
@@ -29,31 +31,19 @@ const NutritionScreen = ({ recipe, nutrition }) => {
       <Text style={styles.heading}>Nutrition per Serving</Text>
       <Text style={styles.quickview}>QuickView</Text>
       <View style={styles.chipContainer}>
-        <View style={styles.chip}>
+        {/* <View style={styles.chip}>
           <Text style={styles.chipTitle}>
             {nutrition.nutrition.calories} Calories
           </Text>
-        </View>
-        <View style={styles.chip}>
-          <Text style={styles.chipTitle}>
-            {nutrition.nutrition.protein} Protein
-          </Text>
-        </View>
-        <View style={styles.chip}>
-          <Text style={styles.chipTitle}>
-            {nutrition.nutrition.fat} Total Fat
-          </Text>
-        </View>
-        <View style={styles.chip}>
-          <Text style={styles.chipTitle}>
-            {nutrition.nutrition.carbs} Carbs
-          </Text>
-        </View>
-        <View style={styles.chip}>
-          <Text style={styles.chipTitle}>
-            {recipe.healthScore}% health score
-          </Text>
-        </View>
+        </View> */}
+        <ChipCard
+          item={nutrition.nutrition.calories}
+          string={strings.calories}
+        />
+        <ChipCard item={nutrition.nutrition.protein} string={strings.protein} />
+        <ChipCard item={nutrition.nutrition.fat} string={strings.fat} />
+        <ChipCard item={nutrition.nutrition.carbs} string={strings.carbs} />
+        <ChipCard item={recipe.healthScore} string={strings.healthScore} />
       </View>
       {/* end of overview */}
 
@@ -65,7 +55,7 @@ const NutritionScreen = ({ recipe, nutrition }) => {
             <Text style={[styles.quickview, styles.danger]}>Limit these</Text>
           }
           ListFooterComponent={
-            <View>
+            <View style={styles.footerContainer}>
               <Text style={[styles.quickview, styles.good]}>
                 Get Enough Of These
               </Text>
